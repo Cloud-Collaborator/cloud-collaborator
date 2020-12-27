@@ -1,5 +1,6 @@
 const fileName = document.getElementById("filename");
 const workspaceName = document.getElementById("workspace");
+let cwd = "";
 const loadFile = () => {
   let fileNameValue = fileName.value;
   let workspaceValue = workspace.value;
@@ -13,6 +14,7 @@ const loadFile = () => {
       .then((res) => res.json())
       .then((resp) => {
         document.getElementById("editor").value = resp.data;
+        cwd = "/" + workspaceValue + "/" + fileNameValue;
       })
       .catch((e) => console.log(e));
   } else {

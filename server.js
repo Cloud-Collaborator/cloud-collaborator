@@ -69,12 +69,17 @@ const log = console.log;
 io.on("connection", (socket) => {
   log("connected");
   socket.on("message", (evt) => {
-    // log(evt);
-    fs.writeFile(__dirname + "/files/" + "example.txt", evt, function (err) {
-      if (err) throw err;
-      console.log("Saved!");
-    });
-    socket.broadcast.emit("message", evt);
+    log(evt);
+    fs.writeFile(
+      __dirname + "/workspaces" + evt.file,
+      evt.text,
+      function (err) {
+        if (err) throw err;
+        console.log("Saved!");
+      }
+    );
+    console.log("here");
+    socket.broadcast.emit("message", evt.text);
   });
 });
 io.on("disconnect", (evt) => {
