@@ -1,17 +1,22 @@
-<html>
-  <title>Realtime Editor/Collaboration</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Collaborator</title>
+  </head>
   <body>
-    <h3>Realtime Editor/Collaboration</h3>
+    <h3>Cloud Collaborator</h3>
     <div>
       <textarea
         rows="30"
-        cols="50"
         id="editor"
-        style="background-color: dimgrey; color: white"
-        placeholder="Type Your Text..."
+        placeholder="start collaboration..."
       ></textarea>
     </div>
+    <script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
+    <script src="./js/client.js"></script>
   </body>
   <script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
-  <script src="./client.js"></script>
+  <script src="./js/client.js"></script>
 </html>
