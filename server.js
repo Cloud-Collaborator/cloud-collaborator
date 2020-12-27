@@ -4,6 +4,7 @@ let server = require("http").createServer(app);
 let io = require("socket.io")(server);
 const path = require("path");
 const fs = require("fs");
+const { execSync } = require("child_process");
 const public_dir = path.join(__dirname);
 app.use(express.static(public_dir));
 app.get("/public", (req, res) => {
@@ -24,6 +25,34 @@ app.get("/public/:filename", (req, res) => {
       }
     }
   );
+});
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/workspaces.html");
+});
+app.get("/workspaces/:workspace_name", (req, res) => {
+  const workspaceName = req.params.workspace_name;
+
+  fs.readdir(__dirname + "/workspaces/", (err, files) => {
+    let exists = false;
+    for (file in files) {
+      if (files[file] === workspaceName) {
+        console.log("here");
+        exists = true;
+        break;
+      }
+    }
+    if (exists) {
+      res.send({ data: "redirecting to previously existing directory" });
+    } else {
+      fs.mkdir(__dirname + "/workspaces/" + workspaceName, (err) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log("directory created");
+      });
+      res.send({ data: "creating direcory " + workspaceName });
+    }
+  });
 });
 const log = console.log;
 io.on("connection", (socket) => {
