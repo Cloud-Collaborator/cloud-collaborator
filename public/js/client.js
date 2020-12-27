@@ -2,10 +2,7 @@
 // let socket = io("http://1c5f2e6bd699.ngrok.io");
 let socket = io();
 const log = console.log;
-function getEl(id) {
-  return document.getElementById(id);
-}
-const editor = getEl("editor");
+const editor = document.getElementById("editor");
 editor.addEventListener("keyup", (evt) => {
   const text = editor.value;
   socket.send(text);
