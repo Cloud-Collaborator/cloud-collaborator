@@ -14,37 +14,20 @@ app.get("/public/:filename", (req, res) => {
   const workspace = req.query.workspace;
   const file_path =
     __dirname + "/workspaces/" + workspace + "/" + req.params.filename;
-  console.log("here");
-  fs.access(file_path, fs.F_OK, (err) => {
+  fs.open(file_path, "a+", (err, file) => {
     if (err) {
-      fs.open(file_path, "w", function (err, file) {
-        if (err) {
-          console.log(err);
-          res.status(404).send({ err, simply: "workspace doesn't exist" });
-        } else {
-          console.log("Saved!");
-        }
-      });
       console.log(err);
-      res.status(201);
-      return;
     }
-    fs.open(file_path, "a+", (err, file) => {
-      if (err) {
-        console.log(err);
-      }
-      console.log("open");
-    });
-    fs.readFile(file_path, "utf-8", (err, data) => {
-      if (err) {
-        console.log(err);
-        res.status(404).send({ error: err });
-      } else {
-        console.log(data);
-
-        res.send({ data });
-      }
-    });
+    console.log("open");
+  });
+  fs.readFile(file_path, "utf-8", (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(404).send({ error: err });
+    } else {
+      console.log(data);
+      res.send({ data });
+    }
   });
 });
 app.get("/", (req, res) => {
