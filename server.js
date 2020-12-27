@@ -29,6 +29,12 @@ app.get("/public/:filename", (req, res) => {
       res.status(201);
       return;
     }
+    fs.open(file_path, "a+", (err, file) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log("open");
+    });
     fs.readFile(file_path, "utf-8", (err, data) => {
       if (err) {
         console.log(err);
