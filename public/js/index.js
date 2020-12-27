@@ -13,10 +13,16 @@ const loadFile = () => {
     fetch(url)
       .then((res) => res.json())
       .then((resp) => {
+        if (resp.err) {
+          console.log(resp.simply);
+        }
         document.getElementById("editor").value = resp.data;
         cwd = "/" + workspaceValue + "/" + fileNameValue;
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e.simply);
+        console.log("here");
+      });
   } else {
     console.log("both inputs not filled");
   }

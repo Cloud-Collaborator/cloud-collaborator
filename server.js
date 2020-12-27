@@ -18,8 +18,12 @@ app.get("/public/:filename", (req, res) => {
   fs.access(file_path, fs.F_OK, (err) => {
     if (err) {
       fs.open(file_path, "w", function (err, file) {
-        if (err) throw err;
-        console.log("Saved!");
+        if (err) {
+          console.log(err);
+          res.status(404).send({ err, simply: "workspace doesn't exist" });
+        } else {
+          console.log("Saved!");
+        }
       });
       console.log(err);
       res.status(201);
