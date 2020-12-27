@@ -11,10 +11,19 @@ app.get("/public", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 app.get("/public/:filename", (req, res) => {
-  fs.readFile(
-    __dirname + "/files/" + req.params.filename,
-    "utf-8",
-    (err, data) => {
+  const file_path = __dirname + "/files/" + req.params.filename;
+
+  fs.access(file_path, fs.F_OK, (err) => {
+    if (err) {
+      fs.open(file_path, "w", function (err, file) {
+        if (err) throw err;
+        console.log("Saved!");
+      });
+      console.log(err);
+      res.status(201);
+      return;
+    }
+    fs.readFile(file_path, "utf-8", (err, data) => {
       if (err) {
         console.log(err);
         res.status(404).send({ error: err });
@@ -23,8 +32,8 @@ app.get("/public/:filename", (req, res) => {
 
         res.send({ data });
       }
-    }
-  );
+    });
+  });
 });
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/workspaces.html");
