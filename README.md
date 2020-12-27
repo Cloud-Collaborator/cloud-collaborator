@@ -2,7 +2,7 @@
 
 ## getting started
 
-make sure you have 'npm' or 'yarn' installed on your local maching
+make sure you have 'npm' or 'yarn' installed on your local machine
 
 to text the project on your local machine run :
 
