@@ -11,8 +11,10 @@ app.get("/public", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 app.get("/public/:filename", (req, res) => {
-  const file_path = __dirname + "/files/" + req.params.filename;
-
+  const workspace = req.query.workspace;
+  const file_path =
+    __dirname + "/workspaces/" + workspace + "/" + req.params.filename;
+  console.log("here");
   fs.access(file_path, fs.F_OK, (err) => {
     if (err) {
       fs.open(file_path, "w", function (err, file) {
