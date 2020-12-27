@@ -15,16 +15,11 @@ app.use(fileRouter);
 io.on("connection", (socket) => {
   console.log("connected");
   socket.on("message", (evt) => {
-    console.log(evt);
-    fs.writeFile(
-      __dirname + "/workspaces" + evt.file,
-      evt.text,
-      function (err) {
-        if (err) throw err;
-        console.log("Saved!");
-      }
-    );
-    console.log("here");
+    // console.log(evt);
+    fs.writeFile(public_dir + "/workspaces" + evt.file, evt.text, (err) => {
+      if (err) throw err;
+      console.log("Saved!");
+    });
     socket.broadcast.emit("message", evt.text);
   });
 });

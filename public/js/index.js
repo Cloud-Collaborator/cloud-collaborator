@@ -14,14 +14,14 @@ const loadFile = () => {
       .then((res) => res.json())
       .then((resp) => {
         if (resp.err) {
+          //debugger
           console.log(resp.simply);
         }
         document.getElementById("editor").value = resp.data;
         cwd = "/" + workspaceValue + "/" + fileNameValue;
       })
       .catch((e) => {
-        console.log(e.simply);
-        console.log("here");
+        console.log(e);
       });
   } else {
     console.log("both inputs not filled");

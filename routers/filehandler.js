@@ -17,14 +17,12 @@ router.get("/public/:filename", (req, res) => {
     if (err) {
       console.log(err);
     }
-    console.log("open");
+    // console.log("open");
   });
   fs.readFile(file_path, "utf-8", (err, data) => {
     if (err) {
-      console.log(err);
       res.status(404).send({ error: err, data: "" });
     } else {
-      console.log(data);
       res.send({ data });
     }
   });
@@ -36,7 +34,6 @@ router.get("/workspaces/:workspace_name", (req, res) => {
     let exists = false;
     for (file in files) {
       if (files[file] === workspaceName) {
-        console.log("here");
         exists = true;
         break;
       }
@@ -48,7 +45,7 @@ router.get("/workspaces/:workspace_name", (req, res) => {
         if (err) {
           console.log(err);
         }
-        console.log("directory created");
+        // console.log("directory created");
       });
       res.send({ data: "creating direcory " + workspaceName });
     }
