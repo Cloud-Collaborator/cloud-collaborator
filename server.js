@@ -30,6 +30,10 @@ io.on("connection", (socket) => {
   log("connected");
   socket.on("message", (evt) => {
     // log(evt);
+    fs.writeFile(__dirname + "/files/" + "example.txt", evt, function (err) {
+      if (err) throw err;
+      console.log("Saved!");
+    });
     socket.broadcast.emit("message", evt);
   });
 });
