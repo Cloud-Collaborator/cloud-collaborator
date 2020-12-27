@@ -22,7 +22,7 @@ router.get("/public/:filename", (req, res) => {
   fs.readFile(file_path, "utf-8", (err, data) => {
     if (err) {
       console.log(err);
-      res.status(404).send({ error: err });
+      res.status(404).send({ error: err, data: "" });
     } else {
       console.log(data);
       res.send({ data });
