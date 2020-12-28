@@ -6,7 +6,7 @@
 body {
   font-size: 16px;
 }
-#editor {
+/* #editor {
   width: 95%;
   font-size: 1rem;
   border: var(--gray) 5px solid;
@@ -14,4 +14,4 @@ body {
   background-color: var(--black);
   padding: 1em;
   margin: auto;
-}
+} */

@@ -4,7 +4,9 @@ let socket = io();
 const log = console.log;
 const editor = document.getElementById("editor");
 editor.addEventListener("keyup", (evt) => {
-  if (fileName.value) {
+  // console.log(editor.value);
+  // console.log(document.getElementById("code-output"));
+  if (fileName.value || existingFileName) {
     const text = editor.value;
     socket.send({ text, file: cwd });
   } else {
@@ -13,5 +15,6 @@ editor.addEventListener("keyup", (evt) => {
 });
 socket.on("message", (data) => {
   editor.value = data;
+  // document.getElementById("code-output").value = data;
 });
 //TODO : remove workspace name from localstorage befor closing socket from client side

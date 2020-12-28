@@ -4,16 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="css/highlighter.css" />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <title>Cloud Collaborator</title>
   </head>
   <body>
     <h3>Cloud Collaborator</h3>
     <div>
-      <textarea
+      <!-- <textarea
         rows="30"
         id="editor"
         placeholder="start collaboration..."
-      ></textarea>
+      ></textarea> -->
+      <!-- here -->
+      <form>
+        <select id="language-selector" aria-controls="code-highlighter">
+          <option value="html">HTML</option>
+          <option value="javascript" selected>JavaScript</option>
+          <option value="php">PHP</option>
+          <option value="c++">CPP</option>
+        </select>
+
+        <fieldset class="editor">
+          <textarea
+            id="editor"
+            aria-controls="code-highlighter"
+            class="input"
+            autocapitalize="off"
+            spellcheck="false"
+          ></textarea>
+          <output
+            id="code-output"
+            role="status"
+            class="highlighted-output javascript"
+          ></output>
+        </fieldset>
+      </form>
+      <!-- end -->
       <!-- <input type="text" id="workspace" placeholder="workspacename" /> -->
       <input type="text" id="filename" placeholder="filename.extension" />
       <button onclick="createFile()">Create File</button>
@@ -23,5 +54,6 @@
     <script src="./js/socket.io.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/client.js"></script>
+    <script src="js/highlighter.js"></script>
   </body>
 </html>
