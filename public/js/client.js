@@ -6,7 +6,7 @@ const editor = document.getElementById("editor");
 editor.addEventListener("keyup", (evt) => {
   // console.log(editor.value);
   // console.log(document.getElementById("code-output"));
-  if (fileName.value || existingFileName) {
+  if (currentWorkingFile) {
     const text = editor.value;
     socket.send({ text, file: cwd });
   } else {

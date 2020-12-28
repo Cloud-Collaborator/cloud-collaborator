@@ -1,7 +1,7 @@
 const fileName = document.getElementById("filename");
 const workspace = localStorage.getItem("workspace");
 const BASE_URL = "http://localhost:3000";
-let existingFileName = "";
+let currentWorkingFile = "";
 // const BASE_URL = "http://29d0f35f2d8c.ngrok.io";
 // const workspaceName = document.getElementById("workspace");
 // console.log(workspace);
@@ -35,6 +35,7 @@ if (!workspace) {
 let cwd = "";
 const createFile = () => {
   let fileNameValue = fileName.value;
+  currentWorkingFile = fileNameValue;
   // let workspaceValue = workspaceName.value;
   let workspaceValue = workspace;
   if (!workspaceValue) {
@@ -64,7 +65,7 @@ const createFile = () => {
 };
 const loadExistingFile = () => {
   const fileNameValue = document.getElementById("file-menu").value;
-  existingFileName = fileNameValue;
+  currentWorkingFile = fileNameValue;
   let workspaceValue = workspace;
   if (!workspaceValue) {
     location.href = BASE_URL;
