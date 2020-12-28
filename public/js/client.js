@@ -4,7 +4,7 @@ let socket = io();
 const log = console.log;
 const editor = document.getElementById("editor");
 editor.addEventListener("keyup", (evt) => {
-  if (fileName.value) {
+  if (currentWorkingFile) {
     const text = editor.value;
     socket.send({ text, file: cwd });
   } else {
