@@ -53,7 +53,9 @@ const createFile = () => {
             console.log(resp.simply);
           }
           document.getElementById("editor").value = resp.data;
-          cwd = "/" + workspaceValue + "/" + fileNameValue;
+          cwd = "/" + workspaceValue + "/" + fileNameValue; //not sure about these two lines
+          codeOutput.textContent = codeInput.value;
+          hljs.highlightBlock(codeOutput);
         })
         .catch((e) => {
           console.log(e);
@@ -83,6 +85,9 @@ const loadExistingFile = () => {
           }
           document.getElementById("editor").value = resp.data;
           cwd = "/" + workspaceValue + "/" + fileNameValue;
+          //not sure about these two lines
+          codeOutput.textContent = codeInput.value;
+          hljs.highlightBlock(codeOutput);
         })
         .catch((e) => {
           console.log(e);
