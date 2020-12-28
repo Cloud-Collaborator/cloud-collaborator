@@ -13,9 +13,17 @@ codeInput.addEventListener("change", (event) => {
   codeOutput.textContent = codeInput.value;
   hljs.highlightBlock(codeOutput);
 });
+codeInput.addEventListener("focus", (event) => {
+  codeOutput.textContent = codeInput.value;
+  hljs.highlightBlock(codeOutput);
+});
 codeInput.addEventListener("scroll", (event) => {
   codeOutput.scrollTop = codeInput.scrollTop;
   codeOutput.scrollLeft = codeInput.scrollLeft;
+});
+codeInput.addEventListener("storage", (event) => {
+  codeOutput.textContent = codeInput.value;
+  hljs.highlightBlock(codeOutput);
 });
 const resizeObserver = new ResizeObserver((entries) => {
   for (let entry of entries) {
