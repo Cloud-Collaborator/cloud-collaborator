@@ -4,9 +4,14 @@ let socket = io();
 const log = console.log;
 const editor = document.getElementById("editor");
 editor.addEventListener("keyup", (evt) => {
-  const text = editor.value;
-  socket.send({ text, file: cwd });
+  if (fileName.value) {
+    const text = editor.value;
+    socket.send({ text, file: cwd });
+  } else {
+    console.log("No file provided to write into");
+  }
 });
 socket.on("message", (data) => {
   editor.value = data;
 });
+//TODO : remove workspace name from localstorage befor closing socket from client side

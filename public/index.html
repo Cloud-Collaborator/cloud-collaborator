@@ -14,12 +14,13 @@
         id="editor"
         placeholder="start collaboration..."
       ></textarea>
-      <input type="text" id="workspace" placeholder="workspacename" />
+      <!-- <input type="text" id="workspace" placeholder="workspacename" /> -->
       <input type="text" id="filename" placeholder="filename.extension" />
       <button onclick="loadFile()">Open File</button>
+      <div id="feedback"></div>
     </div>
     <script src="../node_modules/socket.io/client-dist/socket.io.js"></script>
-    <script src="./js/client.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/client.js"></script>
   </body>
 </html>

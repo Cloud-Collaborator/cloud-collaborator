@@ -30,3 +30,6 @@ io.on("disconnect", (evt) => {
 server.listen(PORT, () => {
   console.log("Server up on Port : ", PORT);
 });
+//TODO : add authenticaion to the workspace so that it becomes more secure and robust
+//TODO : add terminal to give functionality to execute code
+//TODO : Limit size of workspace
