@@ -10,7 +10,24 @@ if (!workspace) {
   fetch(BASE_URL + "/workspacefiles/" + workspace)
     .then((res) => res.json())
     .then((files) => {
-      console.log(files);
+      const fileList = files["files"];
+      console.log(fileList);
+      let fileMenu = document.createElement("select");
+      fileMenu.name = "workspace files";
+      fileMenu.id = "file-menu";
+      for (const file of fileList) {
+        let option = document.createElement("option");
+        option.value = file;
+        option.text = file;
+        fileMenu.appendChild(option);
+      }
+      let label = document.createElement("label");
+      label.innerHTML = "choose a file : ";
+      label.htmlFor = "file-menu";
+      document
+        .getElementById("container")
+        .appendChild(label)
+        .appendChild(fileMenu);
     });
 }
 let cwd = "";
