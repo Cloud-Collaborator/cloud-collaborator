@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
       if (err) throw err;
       console.log("Saved!");
     });
-    socket.broadcast.emit("message", evt.text);
+    socket.broadcast.emit("message", evt);
   });
 });
 io.on("disconnect", (evt) => {
