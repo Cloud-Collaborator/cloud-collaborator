@@ -6,6 +6,12 @@ const BASE_URL = "http://localhost:3000";
 // console.log(workspace);
 if (!workspace) {
   location.href = BASE_URL;
+} else {
+  fetch(BASE_URL + "/workspacefiles/" + workspace)
+    .then((res) => res.json())
+    .then((files) => {
+      console.log(files);
+    });
 }
 let cwd = "";
 const loadFile = () => {

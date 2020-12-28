@@ -51,4 +51,13 @@ router.get("/workspaces/:workspace_name", (req, res) => {
     }
   });
 });
+router.get("/workspacefiles/:workspace", (req, res) => {
+  const workspaceName = req.params.workspace;
+  fs.readdir(public_dir + "/workspaces/" + workspaceName, (err, files) => {
+    if (err) {
+      res.status(404).send({ err: "No such workspace exists" });
+    }
+    res.send({ files });
+  });
+});
 module.exports = router;
