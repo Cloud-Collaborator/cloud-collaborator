@@ -1,9 +1,11 @@
 const fileName = document.getElementById("filename");
 const workspace = localStorage.getItem("workspace");
+// const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://29d0f35f2d8c.ngrok.io";
 // const workspaceName = document.getElementById("workspace");
 // console.log(workspace);
 if (!workspace) {
-  location.href = "http://localhost:3000";
+  location.href = BASE_URL;
 }
 let cwd = "";
 const loadFile = () => {
@@ -11,14 +13,11 @@ const loadFile = () => {
   // let workspaceValue = workspaceName.value;
   let workspaceValue = workspace;
   if (!workspaceValue) {
-    location.href = "http://localhost:3000";
+    location.href = BASE_URL;
   } else {
     if (fileNameValue) {
       const url =
-        "http://localhost:3000/public/" +
-        fileNameValue +
-        "?workspace=" +
-        workspaceValue;
+        BASE_URL + "/public/" + fileNameValue + "?workspace=" + workspaceValue;
       fetch(url)
         .then((res) => res.json())
         .then((resp) => {
