@@ -32,7 +32,7 @@ if (!workspace) {
     });
 }
 let cwd = "";
-const loadFile = () => {
+const createFile = () => {
   let fileNameValue = fileName.value;
   // let workspaceValue = workspaceName.value;
   let workspaceValue = workspace;
