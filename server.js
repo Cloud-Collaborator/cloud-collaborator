@@ -1,25 +1,41 @@
 let express = require("express");
 let app = express();
+const cors = require("cors");
 let server = require("http").createServer(app);
-let io = require("socket.io")(server);
+let io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
+});
+app.use(cors());
 const path = require("path");
+const fs = require("fs");
+
 const public_dir = path.join(__dirname);
 app.use(express.static(public_dir));
-app.get("/public", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-const log = console.log;
+const PORT = process.env.PORT || 3000;
+//import the filerouter
+const fileRouter = require("./routers/filehandler");
+app.use(fileRouter);
+
 io.on("connection", (socket) => {
-  log("connected");
+  console.log("connected");
   socket.on("message", (evt) => {
-    // log(evt);
+    // console.log(evt);
+    fs.writeFile(public_dir + "/workspaces" + evt.file, evt.text, (err) => {
+      if (err) throw err;
+      console.log("Saved!");
+    });
     socket.broadcast.emit("message", evt);
   });
 });
 io.on("disconnect", (evt) => {
-  log("some people left");
+  console.log("some people left");
 });
-const PORT = 3000;
+
 server.listen(PORT, () => {
   console.log("Server up on Port : ", PORT);
 });
+//TODO : add authenticaion to the workspace so that it becomes more secure and robust
+//TODO : add terminal to give functionality to execute code
+//TODO : Limit size of workspace
