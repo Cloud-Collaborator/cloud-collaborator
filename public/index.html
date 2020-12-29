@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/highlighter.css" />
     <link
       rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/tomorrow-night.min.css"
     />
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <title>Cloud Collaborator</title>
@@ -15,12 +15,6 @@
   <body>
     <h3>Cloud Collaborator</h3>
     <div>
-      <!-- <textarea
-        rows="30"
-        id="editor"
-        placeholder="start collaboration..."
-      ></textarea> -->
-      <!-- here -->
       <form>
         <select id="language-selector" aria-controls="code-highlighter">
           <option value="html">HTML</option>
@@ -45,11 +39,13 @@
         </fieldset>
       </form>
       <!-- end -->
-      <!-- <input type="text" id="workspace" placeholder="workspacename" /> -->
       <input type="text" id="filename" placeholder="filename.extension" />
       <button onclick="createFile()">Create File</button>
       <div id="container"></div>
-      <div id="feedback"></div>
+      <div id="feedback">
+        <span>Currently open : </span
+        ><span id="currently-open-file">No file</span>
+      </div>
     </div>
     <script src="./js/socket.io.js"></script>
     <script src="./js/index.js"></script>
