@@ -18,7 +18,10 @@
       <input type="text" id="filename" placeholder="filename.extension" />
       <button onclick="createFile()">Create File</button>
       <div id="container"></div>
-      <div id="feedback"></div>
+      <div id="feedback">
+        <span>Currently open : </span
+        ><span id="currently-open-file">No file</span>
+      </div>
     </div>
     <script src="./js/socket.io.js"></script>
     <script src="./js/index.js"></script>
