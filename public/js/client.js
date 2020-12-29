@@ -14,6 +14,8 @@ editor.addEventListener("keyup", (evt) => {
 socket.on("message", (data) => {
   if (currentWorkingFile === data.fileName && workspace === data.workspace) {
     editor.value = data.text;
+    codeOutput.textContent = codeInput.value;
+    hljs.highlightBlock(codeOutput);
     console.log("here");
   }
 });
