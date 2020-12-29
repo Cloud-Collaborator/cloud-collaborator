@@ -6,7 +6,6 @@ const editor = document.getElementById("editor");
 editor.addEventListener("keyup", (evt) => {
   if (currentWorkingFile) {
     const text = editor.value;
-
     socket.send({ text, file: cwd, fileName: currentWorkingFile, workspace });
   } else {
     console.log("No file provided to write into");

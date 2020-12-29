@@ -58,7 +58,6 @@ let cwd = "";
 const createFile = () => {
   let fileNameValue = fileName.value;
   currentWorkingFile = fileNameValue;
-
   // let workspaceValue = workspaceName.value;
   let workspaceValue = workspace;
   if (!workspaceValue) {
@@ -122,4 +121,5 @@ const loadExistingFile = () => {
     }
   }
 };
+
 //TODO: Add an option of dropdown to opening new files that shows the available files in a workspace , and add a separate option to open a new file
