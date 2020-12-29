@@ -20,7 +20,7 @@ const addFileMenu = () => {
         FileMenuContainer.innerHTML = "";
       }
       const fileList = files["files"];
-      console.log(fileList);
+      // console.log(fileList);
       if (fileList.length === 0) {
         console.log("No files created in this workspace");
         return;
@@ -74,10 +74,14 @@ const createFile = () => {
             console.log(resp.simply);
           }
           document.getElementById("editor").value = resp.data;
+
           cwd = "/" + workspaceValue + "/" + fileNameValue; //not sure about these two lines
           codeOutput.textContent = codeInput.value;
           addFileMenu();
           currentlyOpenFile.innerHTML = currentWorkingFile;
+          const extension = getFileExtension(fileNameValue);
+          codeOutput.className = "highlighted-output " + extension;
+          codeOutput.textContent = codeInput.value;
           hljs.highlightBlock(codeOutput);
           socket.emit("newFileCreated", {
             currentWorkingFile,
@@ -113,6 +117,8 @@ const loadExistingFile = () => {
           addFileMenu();
           currentlyOpenFile.innerHTML = currentWorkingFile;
           cwd = "/" + workspaceValue + "/" + fileNameValue;
+          const extension = getFileExtension(fileNameValue);
+          codeOutput.className = "highlighted-output " + extension;
           //not sure about these two lines
           codeOutput.textContent = codeInput.value;
           hljs.highlightBlock(codeOutput);
@@ -125,5 +131,15 @@ const loadExistingFile = () => {
     }
   }
 };
-
+const getFileExtension = (filename) => {
+  let extension = "";
+  for (let i = filename.length - 1; i > -1; i--) {
+    if (filename[i] === ".") {
+      extension = extension.split("").reverse().join("");
+      return extension;
+    }
+    extension += filename[i];
+  }
+  return null;
+};
 //TODO: Add an option of dropdown to opening new files that shows the available files in a workspace , and add a separate option to open a new file

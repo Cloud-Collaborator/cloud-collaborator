@@ -161,7 +161,7 @@ const addThemeMenu = () => {
     // console.log(theme);
   }
   let themeLabel = document.createElement("label");
-  themeLabel.innerHTML = "choose a file : ";
+  themeLabel.innerHTML = "Choose a Theme : ";
   themeLabel.htmlFor = "theme-menu";
   themeLabel.id = "theme-menu-label";
   document
@@ -177,6 +177,5 @@ const setTheme = () => {
     document.getElementById("theme-menu").value +
     ".min.css";
   ThemeLink.setAttribute("href", newHref);
-  console.log(ThemeLink);
 };
 addThemeMenu();

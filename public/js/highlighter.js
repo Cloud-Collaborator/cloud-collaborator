@@ -1,6 +1,6 @@
 const codeInput = document.querySelector("#editor");
 const codeOutput = document.querySelector("#code-output");
-const languageSelector = document.querySelector("#language-selector");
+// const languageSelector = document.querySelector("#language-selector");
 // initialise the highlighted output with whatever is in the input
 codeOutput.textContent = codeInput.value;
 hljs.highlightBlock(codeOutput);
@@ -45,10 +45,10 @@ const resizeObserver = new ResizeObserver((entries) => {
 });
 
 resizeObserver.observe(codeInput);
-languageSelector.addEventListener("change", (event) => {
-  codeOutput.className = "highlighted-output " + languageSelector.value;
+// languageSelector.addEventListener("change", (event) => {
+//   codeOutput.className = "highlighted-output " + languageSelector.value;
 
-  // replace the current formatting
-  codeOutput.textContent = codeInput.value;
-  hljs.highlightBlock(codeOutput);
-});
+//   // replace the current formatting
+//   codeOutput.textContent = codeInput.value;
+//   hljs.highlightBlock(codeOutput);
+// });

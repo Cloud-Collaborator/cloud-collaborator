@@ -16,11 +16,9 @@ socket.on("message", (data) => {
     editor.value = data.text;
     codeOutput.textContent = codeInput.value;
     hljs.highlightBlock(codeOutput);
-    console.log("here");
   }
 });
 socket.on("newFileCreated", (data) => {
-  console.log(data);
   if (workspace === data.workspace) {
     addFileMenu();
   }

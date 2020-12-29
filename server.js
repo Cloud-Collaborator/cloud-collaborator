@@ -29,7 +29,6 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("message", evt);
   });
   socket.on("newFileCreated", (data) => {
-    console.log(data);
     socket.broadcast.emit("newFileCreated", data);
   });
 });
