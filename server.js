@@ -28,6 +28,10 @@ io.on("connection", (socket) => {
     });
     socket.broadcast.emit("message", evt);
   });
+  socket.on("newFileCreated", (data) => {
+    console.log(data);
+    socket.broadcast.emit("newFileCreated", data);
+  });
 });
 io.on("disconnect", (evt) => {
   console.log("some people left");

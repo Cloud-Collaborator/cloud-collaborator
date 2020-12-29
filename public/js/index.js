@@ -79,6 +79,10 @@ const createFile = () => {
           addFileMenu();
           currentlyOpenFile.innerHTML = currentWorkingFile;
           hljs.highlightBlock(codeOutput);
+          socket.emit("newFileCreated", {
+            currentWorkingFile,
+            workspace,
+          });
         })
         .catch((e) => {
           console.log(e);

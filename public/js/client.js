@@ -19,4 +19,10 @@ socket.on("message", (data) => {
     console.log("here");
   }
 });
+socket.on("newFileCreated", (data) => {
+  console.log(data);
+  if (workspace === data.workspace) {
+    addFileMenu();
+  }
+});
 //TODO : remove workspace name from localstorage befor closing socket from client side
