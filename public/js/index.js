@@ -1,3 +1,8 @@
+// imports
+
+import { TerminalUI } from "./TerminalUI";
+import io from "socket.io-client";
+
 const fileName = document.getElementById("filename");
 let currentWorkingFile = "";
 const workspace = localStorage.getItem("workspace");
@@ -127,3 +132,33 @@ const loadExistingFile = () => {
 };
 
 //TODO: Add an option of dropdown to opening new files that shows the available files in a workspace , and add a separate option to open a new file
+
+
+// Terminal
+const serverAddress = "http://localhost:8080";
+
+
+function connectToSocket(serverAddress) {
+  return new Promise(res => {
+    const socket = io(serverAddress);
+    res(socket);
+  });
+}
+
+function startTerminal(container, socket) {
+  const terminal = new TerminalUI(socket);
+
+  terminal.attachTo(container);
+
+  terminal.startListening();
+}
+
+function start() {
+  const container = document.getElementById("terminal-container");
+ connectToSocket(serverAddress).then(socket => {
+    startTerminal(container, socket);
+  });
+}
+
+start();
+
