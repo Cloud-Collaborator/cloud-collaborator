@@ -90,12 +90,12 @@ const editorThemesAll = [
   "xcode.css",
   "zenburn.css",
 ];
-console.log(editorThemes.length);
+
 const editorThemes = {
-  Default: "default.css",
-  TomorrowNight: "tomorrow-night.css",
-  AtomDark: "atom-one-dark.css",
-  AtomLight: "atom-one-light.css",
+  Default: "default",
+  TomorrowNight: "tomorrow-night",
+  AtomDark: "atom-one-dark",
+  AtomLight: "atom-one-light",
 };
 
 const editorLanguagesAll = [
@@ -144,3 +144,39 @@ const editorLanguagesAll = [
   ".NET",
   "YAML",
 ];
+
+const addThemeMenu = () => {
+  let themeMenu = document.createElement("select");
+  themeMenu.name = "Themes";
+  themeMenu.id = "theme-menu";
+  let option = document.createElement("option");
+  option.value = "";
+  option.text = "Select Theme";
+  themeMenu.appendChild(option);
+  for (const theme in editorThemes) {
+    let option = document.createElement("option");
+    option.value = editorThemes[theme];
+    option.text = theme;
+    themeMenu.appendChild(option);
+    // console.log(theme);
+  }
+  let themeLabel = document.createElement("label");
+  themeLabel.innerHTML = "choose a file : ";
+  themeLabel.htmlFor = "theme-menu";
+  themeLabel.id = "theme-menu-label";
+  document
+    .getElementById("theme-selector")
+    .appendChild(themeLabel)
+    .appendChild(themeMenu);
+  themeMenu.addEventListener("change", setTheme);
+};
+const setTheme = () => {
+  const ThemeLink = document.getElementById("theme-link");
+  const newHref =
+    "//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/" +
+    document.getElementById("theme-menu").value +
+    ".min.css";
+  ThemeLink.setAttribute("href", newHref);
+  console.log(ThemeLink);
+};
+addThemeMenu();
