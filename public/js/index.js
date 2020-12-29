@@ -74,9 +74,11 @@ const createFile = () => {
             console.log(resp.simply);
           }
           document.getElementById("editor").value = resp.data;
+          cwd = "/" + workspaceValue + "/" + fileNameValue; //not sure about these two lines
+          codeOutput.textContent = codeInput.value;
           addFileMenu();
           currentlyOpenFile.innerHTML = currentWorkingFile;
-          cwd = "/" + workspaceValue + "/" + fileNameValue;
+          hljs.highlightBlock(codeOutput);
         })
         .catch((e) => {
           console.log(e);
@@ -101,13 +103,15 @@ const loadExistingFile = () => {
         .then((resp) => {
           if (resp.err) {
             //debugger
-
             console.log(resp.simply);
           }
           document.getElementById("editor").value = resp.data;
           addFileMenu();
           currentlyOpenFile.innerHTML = currentWorkingFile;
           cwd = "/" + workspaceValue + "/" + fileNameValue;
+          //not sure about these two lines
+          codeOutput.textContent = codeInput.value;
+          hljs.highlightBlock(codeOutput);
         })
         .catch((e) => {
           console.log(e);

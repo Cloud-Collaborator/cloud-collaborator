@@ -1,0 +1,33 @@
+.editor {
+  position: relative;
+  height: 30rem;
+  padding: 0;
+  border: none;
+  margin: 2rem 0;
+}
+
+.editor .input,
+.editor .highlighted-output {
+  box-sizing: border-box;
+  position: absolute;
+  height: 100%;
+  width: 90%;
+  padding: 0.5em;
+  border: 1px solid black;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  font-family: monospace;
+  white-space: pre;
+  word-wrap: break-word;
+}
+
+.editor .input {
+  z-index: 1;
+  color: transparent;
+  caret-color: black;
+  background-color: transparent;
+}
+
+.editor .highlighted-output {
+  z-index: 0;
+}
