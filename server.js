@@ -38,6 +38,7 @@ io.on("disconnect", (evt) => {
 
 server.listen(PORT, () => {
   console.log("Server up on Port : ", PORT);
+  console.log("link to website : http://localhost:3000");
 });
 //TODO : add authenticaion to the workspace so that it becomes more secure and robust
 //TODO : add terminal to give functionality to execute code

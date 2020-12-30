@@ -60,4 +60,21 @@ router.get("/workspacefiles/:workspace", (req, res) => {
     res.send({ files });
   });
 });
+
+router.get("/workspaces", (req, res) => {
+  fs.readdir(public_dir + "/workspaces/", (err, availableWorkspaces) => {
+    if (err) {
+      console.log(err);
+      fs.mkdir(public_dir + "/workspaces", (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+      res.send([]);
+      return;
+    }
+    console.log(availableWorkspaces);
+    res.send(availableWorkspaces);
+  });
+});
 module.exports = router;

@@ -20,6 +20,7 @@ const addFileMenu = () => {
         FileMenuContainer.innerHTML = "";
       }
       const fileList = files["files"];
+
       // console.log(fileList);
       if (fileList.length === 0) {
         console.log("No files created in this workspace");
@@ -32,6 +33,7 @@ const addFileMenu = () => {
       option.value = "";
       option.text = "Select File";
       fileMenu.appendChild(option);
+
       for (const file of fileList) {
         let option = document.createElement("option");
         option.value = file;
@@ -77,6 +79,7 @@ const createFile = () => {
 
           cwd = "/" + workspaceValue + "/" + fileNameValue; //not sure about these two lines
           codeOutput.textContent = codeInput.value;
+          fileName.value = "";
           addFileMenu();
           currentlyOpenFile.innerHTML = currentWorkingFile;
           const extension = getFileExtension(fileNameValue);
