@@ -23,4 +23,5 @@ socket.on("newFileCreated", (data) => {
     addFileMenu();
   }
 });
+
 //TODO : remove workspace name from localstorage befor closing socket from client side

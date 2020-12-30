@@ -48,7 +48,9 @@ const addFileMenu = () => {
         .getElementById("container")
         .appendChild(label)
         .appendChild(fileMenu);
-      fileMenu.addEventListener("change", loadExistingFile);
+      fileMenu.addEventListener("change", () => {
+        loadFile(2);
+      });
     });
 };
 if (!workspace) {
@@ -57,50 +59,14 @@ if (!workspace) {
   addFileMenu();
 }
 let cwd = "";
-const createFile = () => {
-  let fileNameValue = fileName.value;
-  currentWorkingFile = fileNameValue;
-  // let workspaceValue = workspaceName.value;
-  let workspaceValue = workspace;
-  if (!workspaceValue) {
-    location.href = BASE_URL;
-  } else {
-    if (fileNameValue) {
-      const url =
-        BASE_URL + "/public/" + fileNameValue + "?workspace=" + workspaceValue;
-      fetch(url)
-        .then((res) => res.json())
-        .then((resp) => {
-          if (resp.err) {
-            //debugger
-            console.log(resp.simply);
-          }
-          document.getElementById("editor").value = resp.data;
 
-          cwd = "/" + workspaceValue + "/" + fileNameValue; //not sure about these two lines
-          codeOutput.textContent = codeInput.value;
-          fileName.value = "";
-          addFileMenu();
-          currentlyOpenFile.innerHTML = currentWorkingFile;
-          const extension = getFileExtension(fileNameValue);
-          codeOutput.className = "highlighted-output " + extension;
-          codeOutput.textContent = codeInput.value;
-          hljs.highlightBlock(codeOutput);
-          socket.emit("newFileCreated", {
-            currentWorkingFile,
-            workspace,
-          });
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    } else {
-      console.log("Filename Not input");
-    }
+const loadFile = (method) => {
+  let fileNameValue;
+  if (method === 1) {
+    fileNameValue = fileName.value;
+  } else {
+    fileNameValue = document.getElementById("file-menu").value;
   }
-};
-const loadExistingFile = () => {
-  const fileNameValue = document.getElementById("file-menu").value;
   currentWorkingFile = fileNameValue;
   let workspaceValue = workspace;
   if (!workspaceValue) {
@@ -122,9 +88,15 @@ const loadExistingFile = () => {
           cwd = "/" + workspaceValue + "/" + fileNameValue;
           const extension = getFileExtension(fileNameValue);
           codeOutput.className = "highlighted-output " + extension;
-          //not sure about these two lines
           codeOutput.textContent = codeInput.value;
           hljs.highlightBlock(codeOutput);
+          fileName.value = "";
+          if (method === 1) {
+            socket.emit("newFileCreated", {
+              currentWorkingFile,
+              workspace,
+            });
+          }
         })
         .catch((e) => {
           console.log(e);

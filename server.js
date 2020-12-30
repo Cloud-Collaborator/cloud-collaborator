@@ -31,11 +31,13 @@ io.on("connection", (socket) => {
   socket.on("newFileCreated", (data) => {
     socket.broadcast.emit("newFileCreated", data);
   });
+  socket.on("newWorkspaceCreated", (data) => {
+    socket.broadcast.emit("newWorkspaceCreated", data);
+  });
 });
 io.on("disconnect", (evt) => {
   console.log("some people left");
 });
-
 server.listen(PORT, () => {
   console.log("Server up on Port : ", PORT);
   console.log("link to website : http://localhost:3000");

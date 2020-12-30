@@ -12,7 +12,15 @@ fetch(BASE_URL + "/workspaces")
   .catch((e) => console.log(e));
 
 const addWorkspaceMenu = (availableWorkspaces) => {
+  const previousWorkspaceMenuLabel = document.getElementById(
+    "workspace-menu-label"
+  );
+  const workspaceSelector = document.getElementById("workspace-selector");
+
   let workspaceMenu = document.createElement("select");
+  if (previousWorkspaceMenuLabel || workspaceMenu) {
+    workspaceSelector.innerHTML = "";
+  }
   workspaceMenu.name = "Workspaces";
   workspaceMenu.id = "workspace-menu";
   let option = document.createElement("option");
@@ -48,8 +56,23 @@ const openWorkspace = (method) => {
   if (workspaceInputValue) {
     // localStorage.setItem("workspace", workspaceInputValue);
     fetch(BASE_URL + "/workspaces/" + workspaceInputValue).then((res) => {
-      console.log(res);
+      // console.log(res);
       location.href = BASE_URL + "/public";
     });
+    if (method === 1) {
+      socket.emit("newWorkspaceCreated", { workspaceInputValue });
+    }
   }
 };
+
+let socket = io();
+socket.on("newWorkspaceCreated", (data) => {
+  console.log(data);
+  fetch(BASE_URL + "/workspaces")
+    .then((res) => res.json())
+    .then((availableWorkspaces) => {
+      if (availableWorkspaces.length !== 0)
+        addWorkspaceMenu(availableWorkspaces);
+    })
+    .catch((e) => console.log(e));
+});

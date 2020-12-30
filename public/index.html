@@ -18,13 +18,6 @@
     <div id="theme-selector"></div>
     <div>
       <form>
-        <!-- <select id="language-selector" aria-controls="code-highlighter">
-          <option value="html">HTML</option>
-          <option value="javascript" selected>JavaScript</option>
-          <option value="php">PHP</option>
-          <option value="cpp">CPP</option>
-        </select> -->
-
         <fieldset class="editor">
           <textarea
             id="editor"
@@ -42,7 +35,7 @@
       </form>
       <!-- end -->
       <input type="text" id="filename" placeholder="filename.extension" />
-      <button onclick="createFile()">Create File</button>
+      <button onclick="loadFile(1)">Create File</button>
       <div id="container"></div>
       <div id="feedback">
         <span>Currently open : </span
