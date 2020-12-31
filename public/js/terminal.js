@@ -23,7 +23,7 @@ const execute = () => {
   const cmd = document.getElementById("terminal").value;
   document.getElementById("terminal").value = "";
   if (cmd) {
-    fetch(BASE_URL + "/" + cmd)
+    fetch(BASE_URL + "/terminal/" + cmd)
       .then((res) => res.json())
       .then((ans) => {
         const logDiv = document.createElement("div");

@@ -1,5 +1,10 @@
 const workspaceInput = document.getElementById("workspace-input");
-
+workspaceInput.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    openWorkspace(1);
+  }
+});
 let workspaceInputValue = "";
 localStorage.setItem("workspace", "");
 const BASE_URL = "http://localhost:3000";

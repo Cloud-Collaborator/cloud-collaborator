@@ -11,7 +11,7 @@ const exec_options = {
   killSignal: "SIGTERM",
 };
 
-router.get("/:cmd", (req, res) => {
+router.get("/terminal/:cmd", (req, res) => {
   cp.exec(req.params.cmd, exec_options, (err, stdout, stderr) => {
     console.log("#. exec");
     console.log(typeof stdout);
