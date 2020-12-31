@@ -16,7 +16,9 @@ app.use(express.static(public_dir));
 const PORT = process.env.PORT || 3000;
 //import the filerouter
 const fileRouter = require("./routers/filehandler");
+const terminalRouter = require("./routers/terminal");
 app.use(fileRouter);
+app.use(terminalRouter);
 
 io.on("connection", (socket) => {
   console.log("connected");

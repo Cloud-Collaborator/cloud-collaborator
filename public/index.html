@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/tomorrow-night.min.css"
     />
+    <link rel="stylesheet" href="./css/terminal.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <title>Cloud Collaborator</title>
   </head>
@@ -42,10 +43,14 @@
         ><span id="currently-open-file">No file</span>
       </div>
     </div>
+    <p style="padding: 1em 0 0 0; margin: 1em 0 0 0">Terminal</p>
+    <input type="text" placeholder=" input command" id="terminal" />
+    <div id="terminal-output"></div>
     <script src="./js/socket.io.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/client.js"></script>
     <script src="js/highlighter.js"></script>
     <script src="./js/editorUtils.js"></script>
+    <script src="./js/terminal.js"></script>
   </body>
 </html>
