@@ -3,7 +3,7 @@ const workspaceInput = document.getElementById("workspace-input");
 let workspaceInputValue = "";
 localStorage.setItem("workspace", "");
 const BASE_URL = "http://localhost:3000";
-// const BASE_URL = "http://29d0f35f2d8c.ngrok.io";
+// const BASE_URL = "http://1a6b706d5fe8.ngrok.io";
 fetch(BASE_URL + "/workspaces")
   .then((res) => res.json())
   .then((availableWorkspaces) => {
