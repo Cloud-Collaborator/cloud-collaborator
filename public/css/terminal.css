@@ -7,6 +7,7 @@ error {
   overflow: scroll;
   color: #ffffff;
   padding: 1em;
+  width: 90%;
 }
 #terminal-label {
   width: 10%;
@@ -18,7 +19,7 @@ error {
 #terminal {
   background-color: black;
   color: #ffffff;
-  width: 100%;
+  width: 92%;
   border: 0;
   margin: 0;
 }
