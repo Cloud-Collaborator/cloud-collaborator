@@ -1,6 +1,7 @@
 const cp = require("child_process");
 const express = require("express");
 const router = new express.Router();
+router.use(express.json());
 const exec_options = {
   cwd: null,
   env: null,
@@ -13,6 +14,15 @@ const exec_options = {
 
 router.get("/terminal/:cmd", (req, res) => {
   cp.exec(req.params.cmd, exec_options, (err, stdout, stderr) => {
+    console.log("#. exec");
+    console.log(typeof stdout);
+    console.log(stderr);
+    console.log(err);
+    res.send({ stderr, stdout, err });
+  });
+});
+router.post("/terminal", (req, res) => {
+  cp.exec(req.body.cmd, exec_options, (err, stdout, stderr) => {
     console.log("#. exec");
     console.log(typeof stdout);
     console.log(stderr);

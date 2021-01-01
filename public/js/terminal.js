@@ -1,5 +1,6 @@
 const outputConsole = document.getElementById("terminal-output");
 const terminalInput = document.getElementById("terminal");
+// let terminalCWD = "workspaces/" + localStorage.getItem("workspace");
 const getFormattedOutput = (ipString) => {
   let formattedOutput = "";
   for (i in ipString) {
@@ -23,7 +24,15 @@ const execute = () => {
   const cmd = document.getElementById("terminal").value;
   document.getElementById("terminal").value = "";
   if (cmd) {
-    fetch(BASE_URL + "/terminal/" + cmd)
+    const data = { cmd };
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    };
+    fetch(BASE_URL + "/terminal", options)
       .then((res) => res.json())
       .then((ans) => {
         const logDiv = document.createElement("div");
