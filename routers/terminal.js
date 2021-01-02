@@ -12,22 +12,27 @@ const exec_options = {
   killSignal: "SIGTERM",
 };
 
-router.get("/terminal/:cmd", (req, res) => {
-  cp.exec(req.params.cmd, exec_options, (err, stdout, stderr) => {
-    console.log("#. exec");
-    console.log(typeof stdout);
-    console.log(stderr);
-    console.log(err);
-    res.send({ stderr, stdout, err });
-  });
-});
 router.post("/terminal", (req, res) => {
-  cp.exec(req.body.cmd, exec_options, (err, stdout, stderr) => {
-    console.log("#. exec");
-    console.log(typeof stdout);
-    console.log(stderr);
-    console.log(err);
-    res.send({ stderr, stdout, err });
-  });
+  if (req.body.clientWD) {
+    cp.exec(
+      req.body.clientWD + ";" + req.body.cmd,
+      exec_options,
+      (err, stdout, stderr) => {
+        console.log("#. exec");
+        console.log(stdout);
+        console.log(stderr);
+        console.log(err);
+        res.send({ stderr, stdout, err });
+      }
+    );
+  } else {
+    cp.exec(req.body.cmd, exec_options, (err, stdout, stderr) => {
+      console.log("#. exec");
+      console.log(stdout);
+      console.log(stderr);
+      console.log(err);
+      res.send({ stderr, stdout, err });
+    });
+  }
 });
 module.exports = router;
