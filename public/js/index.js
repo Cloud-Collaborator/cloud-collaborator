@@ -73,9 +73,19 @@ const loadFile = (method) => {
     location.href = BASE_URL;
   } else {
     if (fileNameValue) {
-      const url =
-        BASE_URL + "/public/" + fileNameValue + "?workspace=" + workspaceValue;
-      fetch(url)
+      const data = {
+        file: fileNameValue,
+        workspace,
+      };
+      const options = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(data),
+      };
+      const url = BASE_URL + "/public/files";
+      fetch(url, options)
         .then((res) => res.json())
         .then((resp) => {
           if (resp.err) {

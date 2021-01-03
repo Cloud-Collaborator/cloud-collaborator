@@ -72,7 +72,7 @@ const execute = () => {
       .then((res) => res.json())
       .then((ans) => {
         const logDiv = document.createElement("div");
-        logDiv.innerHTML = "$>~ " + cmd + "<br/>";
+        logDiv.innerHTML = currentDir + "/$>~ " + cmd + "<br/>";
         console.log(ans);
         const { err, stderr, stdout } = ans;
         if (err) {
@@ -94,19 +94,17 @@ const execute = () => {
 
               back_dir_count /= 2;
               currentDirIndex = currentDir.length - 1;
-              while (back_dir_count != 0) {
-                if (currentDir[currentDirIndex] === "/") {
+              for (currentDirIndex; currentDirIndex > -1; currentDirIndex--) {
+                if (back_dir_count === 0) {
+                  break;
+                } else if (currentDir[currentDirIndex] === "/") {
                   back_dir_count -= 1;
                 }
-                currentDirIndex -= 1;
               }
-              currentDir = currentDir.slice(0, currentDirIndex - 1);
-              console.log(currentDir);
+              console.log(currentDir.slice(0, currentDirIndex + 1));
+              currentDir = currentDir.slice(0, currentDirIndex + 1);
             } else {
-              if (currentDir === "") {
-                currentDir = "/";
-              }
-              currentDir = currentDir + cmd.slice(3, cmd.length).trim();
+              currentDir = currentDir + "/" + cmd.slice(3, cmd.length).trim();
             }
           }
           let formattedStderr = getFormattedOutput(stderr);

@@ -3,16 +3,17 @@ const router = new express.Router();
 const fs = require("fs");
 const path = require("path");
 const public_dir = path.join(__dirname, "../");
+router.use(express.json());
 router.get("/public", (req, res) => {
   res.sendFile(public_dir + "/public/index.html");
 });
 router.get("/", (req, res) => {
   res.sendFile(public_dir + "/public/workspaces.html");
 });
-router.get("/public/:filename", (req, res) => {
-  const workspace = req.query.workspace;
+router.post("/public/files", (req, res) => {
+  const workspace = req.body.workspace;
   const file_path =
-    public_dir + "/workspaces/" + workspace + "/" + req.params.filename;
+    public_dir + "/workspaces/" + workspace + "/" + req.body.file;
   fs.open(file_path, "a+", (err, file) => {
     if (err) {
       console.log(err);
@@ -27,6 +28,24 @@ router.get("/public/:filename", (req, res) => {
     }
   });
 });
+// router.get("/public/:filename", (req, res) => {
+//   const workspace = req.query.workspace;
+//   const file_path =
+//     public_dir + "/workspaces/" + workspace + "/" + req.params.filename;
+//   fs.open(file_path, "a+", (err, file) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     // console.log("open");
+//   });
+//   fs.readFile(file_path, "utf-8", (err, data) => {
+//     if (err) {
+//       res.status(404).send({ error: err, data: "" });
+//     } else {
+//       res.send({ data });
+//     }
+//   });
+// });
 router.get("/workspaces/:workspace_name", (req, res) => {
   const workspaceName = req.params.workspace_name;
 
