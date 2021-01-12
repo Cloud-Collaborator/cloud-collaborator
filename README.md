@@ -33,3 +33,13 @@ on your respective browser
 Open this up in multiple tabs and start collaborating!!
 
 Happy collaborating!!
+
+Snap-shots :
+
+![Home Page](./readme_utils/homepage.PNG)
+
+Editor Window
+![Editor Window](./readme_utils/editor.PNG)
+
+Sample Program
+![Sample Program](./readme_utils/sample_program.PNG)
