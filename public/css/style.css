@@ -71,6 +71,12 @@ footer {
   display: flex;
   justify-content: space-evenly;
 }
+#container select {
+  font-size: 1rem;
+  border: 0;
+  background-color: #000000;
+  color: #bc6ff1;
+}
 #theme-selector select {
   font-size: 1rem;
   border: 0;
