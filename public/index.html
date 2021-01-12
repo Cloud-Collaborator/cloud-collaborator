@@ -11,7 +11,7 @@
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/tomorrow-night.min.css"
     />
     <link rel="stylesheet" href="./css/terminal.css" />
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <title>Cloud Collaborator</title>
   </head>
@@ -27,8 +27,8 @@
       </nav>
     </header>
     <div>
-    <div id="theme-selector"></div>
-    <input type="text" id="filename" placeholder="filename.extension" />
+      <div id="theme-selector"></div>
+      <input type="text" id="filename" placeholder="filename.extension" />
       <button onclick="loadFile(1)">Create File</button>
       <div id="container"></div>
       <div id="feedback">
@@ -36,7 +36,7 @@
         ><span id="currently-open-file">No file</span>
       </div>
     </div>
-  </div>
+
     <div class="main-content">
       <form>
         <fieldset class="editor">
@@ -56,12 +56,12 @@
         </fieldset>
       </form>
       <!-- end -->
-      
-    <p style="padding: 1em 0 0 0; margin: 1em 0 0 0">Terminal</p>
-    <div class="terminal-wrapper">
-    <input type="text" placeholder=" input command" id="terminal" />
-    <div id="terminal-output"></div>
-    </div>
+
+      <p style="padding: 1em 0 0 0; margin: 1em 0 0 0">Terminal</p>
+      <div class="terminal-wrapper">
+        <input type="text" placeholder=" input command" id="terminal" />
+        <div id="terminal-output"></div>
+      </div>
     </div>
     <footer><p>Made with ❤ by Burhanuddin Merchant</p></footer>
     <script src="./js/socket.io.js"></script>
