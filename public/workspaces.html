@@ -4,11 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Collaborator</title>
+    <link rel="stylesheet" href="./public/css/workspaces.css" />
   </head>
   <body>
-    <input type="text" id="workspace-input" placeholder="workspace name" />
-    <button onclick="openWorkspace(1)">Open</button>
-    <div id="workspace-selector"></div>
+    <header>
+      <h1>Cloud Collaborator</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="intro">
+        <h2>Welcome to Cloud Collaborator!</h2>
+        <p>
+          An Ideal Real Time, Collaborative Mobile workspace for the the people
+          who want to get their work done from any where they want in .
+        </p>
+      </div>
+      <div class="getting-started">
+        <h2>Getting Started :</h2>
+        <p class="p1">
+          To get started create a new workspace and set up your credentials.
+        </p>
+        <p class="p2">
+          You can also log into an existing workspace and start working from
+          where you/ your team mates had left off
+        </p>
+        <div class="workspace-section">
+          <input
+            type="text"
+            id="workspace-input"
+            placeholder="workspace name"
+          />
+          <button onclick="openWorkspace(1)">Open</button>
+          <div id="workspace-selector"></div>
+        </div>
+      </div>
+    </main>
     <script src="./public/js/socket.io.js"></script>
     <script src="./public/js/workspace.js"></script>
   </body>

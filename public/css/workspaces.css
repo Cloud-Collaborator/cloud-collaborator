@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  color: #000000;
+  font-size: 16px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  background: #000000;
+  padding: 1em;
+}
+header h1 {
+  padding: 0;
+  margin: 0;
+  color: #892cdc;
+}
+header ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+header nav {
+  width: fit-content;
+  margin: auto 0;
+}
+header li {
+  margin-right: 1em;
+}
+nav a {
+  text-decoration: none;
+  color: #f9813a;
+}
+nav a:hover {
+  color: #bc6ff1;
+}
+main {
+  margin-top: 2em;
+}
+.intro {
+  background-color: #52057b;
+  padding: 1em;
+}
+.intro h2 {
+  color: #f9813a;
+}
+.intro p {
+  color: #ffd5cd;
+}
+.getting-started {
+  margin-top: 2em;
+  background-color: #f9813a;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.getting-started p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.25rem;
+}
+.p1 {
+  color: #ffd5cd;
+}
+.p2 {
+  color: #52057b;
+}
+.workspace-section {
+  margin-top: 1em;
+  background-color: #ffd5cd;
+  padding: 1em;
+}
+.workspace-section button {
+  border: 0;
+  width: 7.5em;
+  background: #000000;
+  color: #f9813a;
+  font-size: 1rem;
+  padding: 0.25em;
+}
+.workspace-section button:hover {
+  background: #bc6ff1;
+  color: #ffd5cd;
+}
+#workspace-input {
+  padding: 0;
+  font-size: 1rem;
+  padding: 0.25em;
+  border: 0;
+}
+#workspace-selector {
+  margin-top: 1em;
+  font-size: 1rem;
+}
+#workspace-selector select {
+  border: 0;
+  font-size: 1em;
+  padding: 0.25em;
+  background: #000000;
+  color: #f9813a;
+}

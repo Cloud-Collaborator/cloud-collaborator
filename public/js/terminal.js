@@ -49,12 +49,12 @@ const execute = () => {
           logDiv.innerHTML =
             logDiv.innerHTML +
             "<error>" +
-            "Cannot move out of this environment" +
+            "Error : Cannot move out of this environment<br/>Note : Traversal through absolute path is Prohibited in this terminal" +
             "</error>";
           outputConsole
             .appendChild(logDiv)
             .appendChild(document.createElement("br"));
-          console.log("Cannot move out of this environment");
+          console.log("ERROR : Cannot move out of this environment");
           return;
         }
       }
@@ -84,6 +84,7 @@ const execute = () => {
           logDiv.innerHTML = logDiv.innerHTML + formattedStdout;
         } else {
           if (cmd[0] === "c" && cmd[1] === "d" && !stderr) {
+            console.log(currentDir);
             if ((cmd[3] === "." && cmd[4]) === ".") {
               let back_dir_count = 0;
               for (i of cmd) {
