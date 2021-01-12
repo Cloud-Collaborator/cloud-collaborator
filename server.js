@@ -16,7 +16,9 @@ app.use(express.static(public_dir));
 const PORT = process.env.PORT || 3000;
 //import the filerouter
 const fileRouter = require("./routers/filehandler");
+const terminalRouter = require("./routers/terminal");
 app.use(fileRouter);
+app.use(terminalRouter);
 
 io.on("connection", (socket) => {
   console.log("connected");
@@ -28,13 +30,19 @@ io.on("connection", (socket) => {
     });
     socket.broadcast.emit("message", evt);
   });
+  socket.on("newFileCreated", (data) => {
+    socket.broadcast.emit("newFileCreated", data);
+  });
+  socket.on("newWorkspaceCreated", (data) => {
+    socket.broadcast.emit("newWorkspaceCreated", data);
+  });
 });
 io.on("disconnect", (evt) => {
   console.log("some people left");
 });
-
 server.listen(PORT, () => {
   console.log("Server up on Port : ", PORT);
+  console.log("link to website : http://localhost:3000");
 });
 //TODO : add authenticaion to the workspace so that it becomes more secure and robust
 //TODO : add terminal to give functionality to execute code

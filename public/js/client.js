@@ -14,7 +14,14 @@ editor.addEventListener("keyup", (evt) => {
 socket.on("message", (data) => {
   if (currentWorkingFile === data.fileName && workspace === data.workspace) {
     editor.value = data.text;
-    console.log("here");
+    codeOutput.textContent = codeInput.value;
+    hljs.highlightBlock(codeOutput);
   }
 });
+socket.on("newFileCreated", (data) => {
+  if (workspace === data.workspace) {
+    addFileMenu();
+  }
+});
+
 //TODO : remove workspace name from localstorage befor closing socket from client side
