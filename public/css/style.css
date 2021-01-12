@@ -1,17 +1,49 @@
-:root {
-  --green: #00ff00;
-  --gray: #333333;
-  --black: #000000;
-}
 body {
   font-size: 16px;
+
+  padding: 0;
+  margin: 0;
 }
-/* #editor {
-  width: 95%;
-  font-size: 1rem;
-  border: var(--gray) 5px solid;
-  color: var(--green);
-  background-color: var(--black);
+header {
+  display: flex;
+  justify-content: space-between;
+  background: #000000;
   padding: 1em;
-  margin: auto;
-} */
+  margin-bottom: 2em;
+}
+header h1 {
+  padding: 0;
+  margin: 0;
+  color: #892cdc;
+}
+header ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+header nav {
+  width: fit-content;
+  margin: auto 0;
+}
+header li {
+  margin-right: 1em;
+}
+nav a {
+  text-decoration: none;
+  color: #f9813a;
+}
+nav a:hover {
+  color: #bc6ff1;
+}
+form {
+  padding: 0;
+  margin: 0;
+
+  /* display: flex;
+  flex-direction: column; */
+}
+form p {
+  padding: 0;
+  margin: 0;
+}

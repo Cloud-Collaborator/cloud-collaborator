@@ -11,15 +11,34 @@
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/tomorrow-night.min.css"
     />
     <link rel="stylesheet" href="./css/terminal.css" />
+    <link rel="stylesheet" href="./css/style.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <title>Cloud Collaborator</title>
   </head>
   <body>
-    <h3>Cloud Collaborator</h3>
+    <header>
+      <h1>Cloud Collaborator</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
     <div id="theme-selector"></div>
+    <input type="text" id="filename" placeholder="filename.extension" />
+      <button onclick="loadFile(1)">Create File</button>
+      <div id="container"></div>
+      <div id="feedback">
+        <span>Currently open : </span
+        ><span id="currently-open-file">No file</span>
+      </div>
+    </div>
     <div>
       <form>
         <fieldset class="editor">
+          <p>Editor</p>
           <textarea
             id="editor"
             aria-controls="code-highlighter"
@@ -35,14 +54,7 @@
         </fieldset>
       </form>
       <!-- end -->
-      <input type="text" id="filename" placeholder="filename.extension" />
-      <button onclick="loadFile(1)">Create File</button>
-      <div id="container"></div>
-      <div id="feedback">
-        <span>Currently open : </span
-        ><span id="currently-open-file">No file</span>
-      </div>
-    </div>
+      
     <p style="padding: 1em 0 0 0; margin: 1em 0 0 0">Terminal</p>
     <input type="text" placeholder=" input command" id="terminal" />
     <div id="terminal-output"></div>
