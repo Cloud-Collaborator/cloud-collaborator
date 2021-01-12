@@ -3,6 +3,9 @@ body {
   color: #000000;
   font-size: 16px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 header {
   display: flex;
@@ -100,4 +103,10 @@ main {
   padding: 0.25em;
   background: #000000;
   color: #f9813a;
+}
+footer {
+  margin-top: auto;
+  background-color: #000000;
+  color: #892cdc;
+  text-align: center;
 }
