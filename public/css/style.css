@@ -63,3 +63,54 @@ footer {
   color: #892cdc;
   text-align: center;
 }
+.utils {
+  font-size: 1.125rem;
+  color: #f9813a;
+  padding: 1em;
+  background-color: #1a1c20;
+  display: flex;
+  justify-content: space-evenly;
+}
+#theme-selector select {
+  font-size: 1rem;
+  border: 0;
+  background-color: #000000;
+  color: #bc6ff1;
+}
+#theme-selector select option:hover {
+  font-size: 1rem;
+  border: 0;
+  color: #f9813a;
+  background-color: #000000;
+}
+#currently-open-file {
+  color: #bc6ff1;
+}
+.file-open-section input {
+  border: 0;
+  font-size: 1rem;
+}
+.file-open-section button {
+  border: 0;
+  font-size: 1rem;
+  background: #f9813a;
+  color: #52057b;
+}
+.file-open-section button:hover {
+  background: #52057b;
+  color: #f9813a;
+}
+.box-name {
+  text-align: center;
+  background-color: #000000;
+  color: #bc6ff1;
+  /* width: fit-content; */
+  padding: 0.2em;
+  border-radius: 1000px;
+  margin: 0;
+  border: #bc6ff1 2px solid;
+}
+.box-name:hover {
+  color: #f9813a;
+  border: #f9813a 2px solid;
+}

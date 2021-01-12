@@ -16,7 +16,7 @@
     <title>Cloud Collaborator</title>
   </head>
   <body>
-    <header>
+    <!-- <header>
       <h1>Cloud Collaborator</h1>
       <nav>
         <ul>
@@ -25,11 +25,13 @@
           <li><a href="#">About</a></li>
         </ul>
       </nav>
-    </header>
-    <div>
+    </header> -->
+    <div class="utils">
       <div id="theme-selector"></div>
-      <input type="text" id="filename" placeholder="filename.extension" />
-      <button onclick="loadFile(1)">Create File</button>
+      <div class="file-open-section">
+        <input type="text" id="filename" placeholder="filename.extension" />
+        <button onclick="loadFile(1)">Create File</button>
+      </div>
       <div id="container"></div>
       <div id="feedback">
         <span>Currently open : </span
@@ -40,7 +42,7 @@
     <div class="main-content">
       <form>
         <fieldset class="editor">
-          <p>Editor</p>
+          <p class="box-name">Editor</p>
           <textarea
             id="editor"
             aria-controls="code-highlighter"
@@ -57,7 +59,7 @@
       </form>
       <!-- end -->
 
-      <p style="padding: 1em 0 0 0; margin: 1em 0 0 0">Terminal</p>
+      <p class="box-name">Terminal</p>
       <div class="terminal-wrapper">
         <input type="text" placeholder=" input command" id="terminal" />
         <div id="terminal-output"></div>
