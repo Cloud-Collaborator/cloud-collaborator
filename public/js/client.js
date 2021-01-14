@@ -1,5 +1,3 @@
-// var socket = io("http://localhost:3000");
-// let socket = io("http://1c5f2e6bd699.ngrok.io");
 let socket = io();
 const log = console.log;
 const editor = document.getElementById("editor");
@@ -23,5 +21,3 @@ socket.on("newFileCreated", (data) => {
     addFileMenu();
   }
 });
-
-//TODO : remove workspace name from localstorage befor closing socket from client side

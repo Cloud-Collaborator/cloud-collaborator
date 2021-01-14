@@ -4,8 +4,6 @@ const workspace = localStorage.getItem("workspace");
 const currentlyOpenFile = document.getElementById("currently-open-file");
 const BASE_URL = "http://localhost:3000";
 // const BASE_URL = "http://1a6b706d5fe8.ngrok.io";
-// const workspaceName = document.getElementById("workspace");
-// console.log(workspace);
 const addFileMenu = () => {
   fetch(BASE_URL + "/workspacefiles/" + workspace)
     .then((res) => res.json())
@@ -127,4 +125,3 @@ const getFileExtension = (filename) => {
   }
   return null;
 };
-//TODO: Add an option of dropdown to opening new files that shows the available files in a workspace , and add a separate option to open a new file

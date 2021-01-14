@@ -45,10 +45,3 @@ const resizeObserver = new ResizeObserver((entries) => {
 });
 
 resizeObserver.observe(codeInput);
-// languageSelector.addEventListener("change", (event) => {
-//   codeOutput.className = "highlighted-output " + languageSelector.value;
-
-//   // replace the current formatting
-//   codeOutput.textContent = codeInput.value;
-//   hljs.highlightBlock(codeOutput);
-// });
