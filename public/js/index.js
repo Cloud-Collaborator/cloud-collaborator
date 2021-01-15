@@ -4,6 +4,8 @@ const workspace = localStorage.getItem("workspace");
 const currentlyOpenFile = document.getElementById("currently-open-file");
 const BASE_URL = "http://localhost:3000";
 // const BASE_URL = "http://1a6b706d5fe8.ngrok.io";
+
+// function to add a file menu on the editor page
 const addFileMenu = () => {
   fetch(BASE_URL + "/workspacefiles/" + workspace)
     .then((res) => res.json())
@@ -18,8 +20,6 @@ const addFileMenu = () => {
         FileMenuContainer.innerHTML = "";
       }
       const fileList = files["files"];
-
-      // console.log(fileList);
       if (fileList.length === 0) {
         console.log("No files created in this workspace");
         return;
@@ -51,6 +51,8 @@ const addFileMenu = () => {
       });
     });
 };
+
+// if no workspace is opened , redirect the user to the home page else open file menu
 if (!workspace) {
   location.href = BASE_URL;
 } else {
@@ -58,7 +60,12 @@ if (!workspace) {
 }
 let cwd = "";
 
+// loading a new file into the editor
 const loadFile = (method) => {
+  /* NOTE : the method refers the type of input i.e. 
+   method === 1 => : input from input box (usually used to create new files)
+   method === 2 => : input from select menu
+  */
   let fileNameValue;
   if (method === 1) {
     fileNameValue = fileName.value;
@@ -100,6 +107,7 @@ const loadFile = (method) => {
           hljs.highlightBlock(codeOutput);
           fileName.value = "";
           if (method === 1) {
+            // inform all other users inside the workspace about the new file being created
             socket.emit("newFileCreated", {
               currentWorkingFile,
               workspace,
@@ -114,6 +122,8 @@ const loadFile = (method) => {
     }
   }
 };
+
+// utility function to get the file extension on the current working file for syntax highlightig
 const getFileExtension = (filename) => {
   let extension = "";
   for (let i = filename.length - 1; i > -1; i--) {

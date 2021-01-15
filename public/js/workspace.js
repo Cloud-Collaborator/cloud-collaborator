@@ -1,14 +1,19 @@
 const workspaceInput = document.getElementById("workspace-input");
+
+// open workspace on 'Enter'
 workspaceInput.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     e.preventDefault();
     openWorkspace(1);
   }
 });
+
 let workspaceInputValue = "";
 localStorage.setItem("workspace", "");
 const BASE_URL = "http://localhost:3000";
 // const BASE_URL = "http://1a6b706d5fe8.ngrok.io";
+
+// fetch available workspaces on load
 fetch(BASE_URL + "/workspaces")
   .then((res) => res.json())
   .then((availableWorkspaces) => {
@@ -16,6 +21,7 @@ fetch(BASE_URL + "/workspaces")
   })
   .catch((e) => console.log(e));
 
+// display the workspace menu
 const addWorkspaceMenu = (availableWorkspaces) => {
   const previousWorkspaceMenuLabel = document.getElementById(
     "workspace-menu-label"
@@ -51,6 +57,8 @@ const addWorkspaceMenu = (availableWorkspaces) => {
     openWorkspace(2);
   });
 };
+
+// open a workspace
 const openWorkspace = (method) => {
   if (method === 1) {
     workspaceInputValue = workspaceInput.value;
@@ -71,6 +79,7 @@ const openWorkspace = (method) => {
 };
 
 let socket = io();
+// notify creation of a new workspace to all the other users inside the workspace
 socket.on("newWorkspaceCreated", (data) => {
   console.log(data);
   fetch(BASE_URL + "/workspaces")

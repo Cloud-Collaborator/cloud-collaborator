@@ -145,6 +145,7 @@ const editorLanguagesAll = [
   "YAML",
 ];
 
+// function to display the theme menu
 const addThemeMenu = () => {
   let themeMenu = document.createElement("select");
   themeMenu.name = "Themes";
@@ -158,7 +159,6 @@ const addThemeMenu = () => {
     option.value = editorThemes[theme];
     option.text = theme;
     themeMenu.appendChild(option);
-    // console.log(theme);
   }
   let themeLabel = document.createElement("label");
   themeLabel.innerHTML = "Choose a Theme : ";
@@ -170,6 +170,8 @@ const addThemeMenu = () => {
     .appendChild(themeMenu);
   themeMenu.addEventListener("change", setTheme);
 };
+
+// function to change the theme
 const setTheme = () => {
   const ThemeLink = document.getElementById("theme-link");
   const newHref =
@@ -178,4 +180,6 @@ const setTheme = () => {
     ".min.css";
   ThemeLink.setAttribute("href", newHref);
 };
+
+// initalizatin function call
 addThemeMenu();

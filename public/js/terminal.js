@@ -2,6 +2,8 @@ const outputConsole = document.getElementById("terminal-output");
 const terminalInput = document.getElementById("terminal");
 let terminalCWDBASE = "workspaces/" + localStorage.getItem("workspace");
 let currentDir = "";
+
+// initialize the client's cwd
 fetch(BASE_URL + "/terminal", {
   headers: {
     "Content-Type": "application/json",
@@ -17,7 +19,8 @@ fetch(BASE_URL + "/terminal", {
       "\\workspaces\\" +
       localStorage.getItem("workspace");
   });
-const getCwd = () => {};
+
+// format the output of the terminal
 const getFormattedOutput = (ipString) => {
   let formattedOutput = "";
   for (i in ipString) {
@@ -31,12 +34,16 @@ const getFormattedOutput = (ipString) => {
   }
   return formattedOutput;
 };
+
+// execute command on enter
 terminalInput.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     e.preventDefault();
     execute();
   }
 });
+
+// function to execute the command and display the output
 const execute = () => {
   const cmd = document.getElementById("terminal").value;
   document.getElementById("terminal").value = "";

@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const public_dir = path.join(__dirname, "../");
 router.use(express.json());
-
+console.log(public_dir);
 // send the index.html file to client side upon request to base_url/public
 router.get("/public", (req, res) => {
   res.sendFile(public_dir + "/public/index.html");

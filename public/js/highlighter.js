@@ -1,7 +1,6 @@
 const codeInput = document.querySelector("#editor");
 const codeOutput = document.querySelector("#code-output");
-// const languageSelector = document.querySelector("#language-selector");
-// initialise the highlighted output with whatever is in the input
+
 codeOutput.textContent = codeInput.value;
 hljs.highlightBlock(codeOutput);
 
@@ -28,13 +27,8 @@ codeInput.addEventListener("storage", (event) => {
 const resizeObserver = new ResizeObserver((entries) => {
   for (let entry of entries) {
     if (entry.target === codeInput) {
-      // match the height and width of the output area to the input area
       codeOutput.style.height = codeInput.offsetHeight + "px";
       codeOutput.style.width = codeInput.offsetWidth + "px";
-
-      // provide some padding in the output area to allow for any scroll bars or other decoration in the input area
-      // offsetWidth/offsetHeight is the full width/height of the element
-      // clientWidth/clientHeight is the width/height inside any decoration, like a scrollbar
       codeOutput.style.paddingRight =
         codeInput.offsetWidth - codeInput.clientWidth + "px";
 
