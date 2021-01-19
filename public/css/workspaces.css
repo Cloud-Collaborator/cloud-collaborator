@@ -38,6 +38,11 @@ nav a {
 nav a:hover {
   color: #bc6ff1;
 }
+button:hover,
+select:hover,
+a:hover {
+  cursor: pointer;
+}
 main {
   margin-top: 2em;
 }

@@ -58,6 +58,11 @@ form p {
   display: flex;
   flex-direction: column;
 }
+button:hover,
+select:hover,
+a:hover {
+  cursor: pointer;
+}
 footer {
   margin-top: auto;
   background-color: #000000;
