@@ -13,16 +13,19 @@ localStorage.setItem("workspace", "");
 const BASE_URL = "http://localhost:3000";
 // const BASE_URL = "http://1a6b706d5fe8.ngrok.io";
 
+const addWorkspaceMenu = (availableWorkspaces) => {
+  const availableWorkspacesObject = {};
+  for (const workspace of availableWorkspaces) {
+    availableWorkspacesObject[workspace] = workspace;
+  }
+  addMenu("workspace", availableWorkspacesObject, () => openWorkspace(2));
+};
 // fetch available workspaces on load
 fetch(BASE_URL + "/workspaces")
   .then((res) => res.json())
   .then((availableWorkspaces) => {
     if (availableWorkspaces.length !== 0) {
-      const availableWorkspacesObject = {};
-      for (const workspace of availableWorkspaces) {
-        availableWorkspacesObject[workspace] = workspace;
-      }
-      addMenu("workspace", availableWorkspacesObject, () => openWorkspace(2));
+      addWorkspaceMenu(availableWorkspaces);
     }
   })
   .catch((e) => console.log(e));

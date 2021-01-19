@@ -77,13 +77,13 @@ footer {
   background-color: #000000;
   color: #bc6ff1;
 }
-#theme-selector select {
+#theme-menu select {
   font-size: 1rem;
   border: 0;
   background-color: #000000;
   color: #bc6ff1;
 }
-#theme-selector select option:hover {
+#theme-menu select option:hover {
   font-size: 1rem;
   border: 0;
   color: #f9813a;

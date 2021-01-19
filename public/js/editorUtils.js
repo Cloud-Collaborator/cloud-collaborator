@@ -145,41 +145,15 @@ const editorLanguagesAll = [
   "YAML",
 ];
 
-// function to display the theme menu
-const addThemeMenu = () => {
-  let themeMenu = document.createElement("select");
-  themeMenu.name = "Themes";
-  themeMenu.id = "theme-menu";
-  let option = document.createElement("option");
-  option.value = "";
-  option.text = "Select Theme";
-  themeMenu.appendChild(option);
-  for (const theme in editorThemes) {
-    let option = document.createElement("option");
-    option.value = editorThemes[theme];
-    option.text = theme;
-    themeMenu.appendChild(option);
-  }
-  let themeLabel = document.createElement("label");
-  themeLabel.innerHTML = "Choose a Theme : ";
-  themeLabel.htmlFor = "theme-menu";
-  themeLabel.id = "theme-menu-label";
-  document
-    .getElementById("theme-selector")
-    .appendChild(themeLabel)
-    .appendChild(themeMenu);
-  themeMenu.addEventListener("change", setTheme);
-};
-
 // function to change the theme
 const setTheme = () => {
   const ThemeLink = document.getElementById("theme-link");
   const newHref =
     "//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/" +
-    document.getElementById("theme-menu").value +
+    document.getElementById("theme-selector").value +
     ".min.css";
   ThemeLink.setAttribute("href", newHref);
 };
 
-// initalizatin function call
-addThemeMenu();
+// add theme menu
+addMenu("theme", editorThemes, setTheme);
