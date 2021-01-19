@@ -77,6 +77,12 @@ footer {
   display: flex;
   justify-content: space-evenly;
 }
+@media (max-width: 875px) {
+  .utils {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 #file-menu select {
   font-size: 1rem;
   border: 0;
@@ -125,4 +131,16 @@ footer {
 .box-name:hover {
   color: #f9813a;
   border: #f9813a 2px solid;
+}
+@media (max-width: 875px) {
+  .utils {
+    flex-direction: column;
+    align-items: center;
+  }
+  #theme-menu,
+  .file-open-section,
+  #currently-open-file,
+  #file-menu {
+    margin-bottom: 0.5em;
+  }
 }
