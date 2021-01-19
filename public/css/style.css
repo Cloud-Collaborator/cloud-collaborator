@@ -71,7 +71,7 @@ footer {
   display: flex;
   justify-content: space-evenly;
 }
-#container select {
+#file-menu select {
   font-size: 1rem;
   border: 0;
   background-color: #000000;

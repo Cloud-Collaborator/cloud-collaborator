@@ -10,45 +10,16 @@ const addFileMenu = () => {
   fetch(BASE_URL + "/workspacefiles/" + workspace)
     .then((res) => res.json())
     .then((files) => {
-      const previousFileMenu = document.getElementById("file-menu");
-      const previousFileMenuLabel = document.getElementById("file-menu-label");
-      const FileMenuContainer = document.getElementById("container");
-      if (previousFileMenuLabel) {
-        FileMenuContainer.innerHTML = "";
-      }
-      if (previousFileMenu) {
-        FileMenuContainer.innerHTML = "";
-      }
       const fileList = files["files"];
       if (fileList.length === 0) {
         console.log("No files created in this workspace");
         return;
       }
-      let fileMenu = document.createElement("select");
-      fileMenu.name = "workspace files";
-      fileMenu.id = "file-menu";
-      let option = document.createElement("option");
-      option.value = "";
-      option.text = "Select File";
-      fileMenu.appendChild(option);
-
-      for (const file of fileList) {
-        let option = document.createElement("option");
-        option.value = file;
-        option.text = file;
-        fileMenu.appendChild(option);
+      const fileObject = {};
+      for (file of fileList) {
+        fileObject[file] = file;
       }
-      let label = document.createElement("label");
-      label.innerHTML = "choose a file : ";
-      label.htmlFor = "file-menu";
-      label.id = "file-menu-label";
-      document
-        .getElementById("container")
-        .appendChild(label)
-        .appendChild(fileMenu);
-      fileMenu.addEventListener("change", () => {
-        loadFile(2);
-      });
+      addMenu("file", fileObject, () => loadFile(2));
     });
 };
 
@@ -70,7 +41,7 @@ const loadFile = (method) => {
   if (method === 1) {
     fileNameValue = fileName.value;
   } else {
-    fileNameValue = document.getElementById("file-menu").value;
+    fileNameValue = document.getElementById("file-selector").value;
   }
   currentWorkingFile = fileNameValue;
   let workspaceValue = workspace;
