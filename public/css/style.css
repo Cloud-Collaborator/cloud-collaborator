@@ -5,6 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 header {
   display: flex;
@@ -51,7 +52,7 @@ form p {
 }
 .main-content {
   margin: 0 auto;
-  width: 97%;
+  width: 99%;
 }
 .terminal-wrapper {
   display: flex;
