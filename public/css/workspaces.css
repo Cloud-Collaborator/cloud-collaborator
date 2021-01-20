@@ -7,6 +7,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
 header {
   display: flex;
   justify-content: space-between;
@@ -79,6 +80,7 @@ main {
   margin-top: 1em;
   background-color: #ffd5cd;
   padding: 1em;
+  text-align: center;
 }
 .workspace-section button {
   border: 0;
@@ -114,4 +116,16 @@ footer {
   background-color: #000000;
   color: #892cdc;
   text-align: center;
+}
+@media (max-width: 500px) {
+  header {
+    flex-direction: column;
+  }
+  header nav,
+  header h1 {
+    margin: auto;
+  }
+  header nav {
+    margin-top: 1em;
+  }
 }

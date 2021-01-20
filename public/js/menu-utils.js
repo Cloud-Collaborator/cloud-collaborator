@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:3000";
 // const BASE_URL = "http://fb26771f0972.ngrok.io";
-
+// const BASE_URL = "https://selfish-moose-18.loca.lt";
 // create dynamic menus
 const addMenu = (menuName, options, callback, container = document) => {
   const previousMenuLabel = document.getElementById(menuName + "-label");
