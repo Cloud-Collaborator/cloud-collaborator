@@ -5,7 +5,7 @@ router.use(express.json());
 const exec_options = {
   cwd: null,
   env: null,
-  shell: "powershell.exe",
+  shell: "bash.exe",
   encoding: "utf8",
   timeout: 0,
   maxBuffer: 200 * 1024,
