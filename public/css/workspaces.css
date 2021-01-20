@@ -80,7 +80,6 @@ main {
   margin-top: 1em;
   background-color: #ffd5cd;
   padding: 1em;
-  text-align: center;
 }
 .workspace-section button {
   border: 0;
@@ -118,6 +117,9 @@ footer {
   text-align: center;
 }
 @media (max-width: 500px) {
+  .workspace-section {
+    text-align: center;
+  }
   header {
     flex-direction: column;
   }

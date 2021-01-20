@@ -1,4 +1,13 @@
-const BASE_URL = "http://localhost:3000";
+let preBaseUrl = window.location.href;
+if (preBaseUrl[preBaseUrl.length - 1] === "/") {
+  preBaseUrl = preBaseUrl.slice(0, preBaseUrl.length - 1);
+}
+
+if (preBaseUrl.slice(-6) === "public") {
+  preBaseUrl = preBaseUrl.slice(0, preBaseUrl.length - 7);
+}
+// const BASE_URL = "http://localhost:3000";
+const BASE_URL = preBaseUrl;
 // const BASE_URL = "http://fb26771f0972.ngrok.io";
 // const BASE_URL = "https://selfish-moose-18.loca.lt";
 // create dynamic menus

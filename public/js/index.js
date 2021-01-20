@@ -21,12 +21,14 @@ const addFileMenu = () => {
     });
 };
 
-// if no workspace is opened , redirect the user to the home page else open file menu
-if (!workspace) {
-  location.href = BASE_URL;
-} else {
-  addFileMenu();
-}
+document.body.onload = () => {
+  // if no workspace is opened , redirect the user to the home page else open file menu
+  if (!workspace) {
+    location.href = BASE_URL;
+  } else {
+    addFileMenu();
+  }
+};
 let cwd = "";
 
 // loading a new file into the editor
