@@ -10,8 +10,6 @@ workspaceInput.addEventListener("keyup", (e) => {
 
 let workspaceInputValue = "";
 localStorage.setItem("workspace", "");
-const BASE_URL = "http://localhost:3000";
-// const BASE_URL = "http://1a6b706d5fe8.ngrok.io";
 
 const addWorkspaceMenu = (availableWorkspaces) => {
   const availableWorkspacesObject = {};

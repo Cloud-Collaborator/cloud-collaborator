@@ -2,8 +2,6 @@ const fileName = document.getElementById("filename");
 let currentWorkingFile = "";
 const workspace = localStorage.getItem("workspace");
 const currentlyOpenFile = document.getElementById("currently-open-file");
-const BASE_URL = "http://localhost:3000";
-// const BASE_URL = "http://1a6b706d5fe8.ngrok.io";
 
 // function to add a file menu on the editor page
 const addFileMenu = () => {
