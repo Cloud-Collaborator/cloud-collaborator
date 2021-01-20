@@ -9,7 +9,7 @@ fetch(BASE_URL + "/terminal", {
     "Content-Type": "application/json",
   },
   method: "POST",
-  body: JSON.stringify({ cmd: "GET-Location" }),
+  body: JSON.stringify({ cmd: "pwd" }),
 })
   .then((res) => res.json())
   .then((cwdResp) => {
