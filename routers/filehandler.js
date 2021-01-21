@@ -70,8 +70,9 @@ router.get("/workspacefiles/:workspace", (req, res) => {
   fs.readdir(public_dir + "/workspaces/" + workspaceName, (err, files) => {
     if (err) {
       res.status(404).send({ err: "No such workspace exists" });
+    } else {
+      res.send({ files });
     }
-    res.send({ files });
   });
 });
 
