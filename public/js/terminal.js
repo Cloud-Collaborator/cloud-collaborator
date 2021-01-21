@@ -3,23 +3,45 @@ const terminalInput = document.getElementById("terminal");
 let terminalCWDBASE = "workspaces/" + localStorage.getItem("workspace");
 let currentDir = "";
 
-// initialize the client's cwd
-fetch(BASE_URL + "/terminal", {
-  headers: {
-    "Content-Type": "application/json",
-  },
-  method: "POST",
-  body: JSON.stringify({ cmd: "Get-Location" }),
-})
+fetch(BASE_URL + "/terminalos")
   .then((res) => res.json())
-  .then((cwdResp) => {
-    resp = cwdResp.stdout;
-    terminalCWDBASE =
-      resp.slice(72, resp.length).trim() +
-      "\\workspaces\\" +
-      localStorage.getItem("workspace");
-  });
+  .then((os) => {
+    if (os.os === "win32") {
+      // initialize the client's cwd
 
+      fetch(BASE_URL + "/terminal", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({ cmd: "Get-Location" }),
+      })
+        .then((res) => res.json())
+        .then((cwdResp) => {
+          resp = cwdResp.stdout;
+          terminalCWDBASE =
+            resp.slice(72, resp.length).trim() +
+            "\\workspaces\\" +
+            localStorage.getItem("workspace");
+        });
+    } else {
+      //if os is linux
+      fetch(BASE_URL + "/terminal", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({ cmd: "pwd" }),
+      })
+        .then((res) => res.json())
+        .then((cwdResp) => {
+          console.log(cwdResp.stdout);
+          resp = cwdResp.stdout;
+          terminalCWDBASE =
+            resp.trim() + "/workspaces/" + localStorage.getItem("workspace");
+        });
+    }
+  });
 // format the output of the terminal
 const getFormattedOutput = (ipString) => {
   let formattedOutput = "";
