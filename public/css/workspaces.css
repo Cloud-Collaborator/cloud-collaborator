@@ -140,6 +140,9 @@ footer {
   text-align: center;
 }
 @media (max-width: 500px) {
+  main {
+    width: 97%;
+  }
   .workspace-section {
     text-align: center;
   }
