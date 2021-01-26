@@ -69,8 +69,13 @@ main img {
 .about-intro {
   background-color: #bc6ff1;
   backdrop-filter: blur(2em);
-  width: 90%;
+  width: 97%;
   margin: auto;
+}
+main {
+  width: 97%;
+  max-width: 1500px;
+  margin: 1em auto;
 }
 footer {
   margin-top: auto;
