@@ -58,9 +58,10 @@ main {
   margin: 2em auto;
 }
 .intro {
-  background-color: #52057b;
+  background-color: #892cdc;
   padding: 1em;
   display: flex;
+  border-radius: 20px;
 }
 .intro h2 {
   color: #f9813a;
@@ -75,6 +76,7 @@ main {
 }
 .intro div {
   margin: auto 1em;
+  margin-left: 0;
 }
 @media (max-width: 700px) {
   .intro {
@@ -90,6 +92,7 @@ main {
   padding: 1em;
   display: flex;
   flex-direction: column;
+  border-radius: 20px;
 }
 
 .getting-started p {
@@ -112,6 +115,7 @@ main {
   margin-top: 1em;
   background-color: #ffd5cd;
   padding: 1em;
+  border-radius: 10px;
 }
 .workspace-section button {
   border: 0;
