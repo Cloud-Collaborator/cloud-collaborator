@@ -53,7 +53,7 @@ a:hover {
   color: #892cdc;
 }
 main {
-  width: 90%;
+  width: 97%;
   max-width: 1500px;
   margin: 2em auto;
 }
@@ -62,6 +62,7 @@ main {
   padding: 1em;
   display: flex;
   border-radius: 20px;
+  box-shadow: black 0 0 10px;
 }
 .intro h2 {
   color: #f9813a;
@@ -93,6 +94,7 @@ main {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
+  box-shadow: black 0 0 10px;
 }
 
 .getting-started p {
@@ -153,9 +155,6 @@ footer {
   text-align: center;
 }
 @media (max-width: 500px) {
-  main {
-    width: 97%;
-  }
   .workspace-section {
     text-align: center;
   }

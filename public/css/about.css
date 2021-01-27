@@ -65,6 +65,7 @@ nav a:hover {
 }
 
 .about-cloudcollaborator {
+  box-shadow: black 0 0 10px;
   box-sizing: border-box;
   padding: 1em;
   background-color: #892cdc;
@@ -99,6 +100,7 @@ nav a:hover {
   margin: auto;
 }
 .about-me {
+  box-shadow: black 0 0 10px;
   box-sizing: border-box;
   padding: 1em;
   margin: auto;
