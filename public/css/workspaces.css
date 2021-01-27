@@ -97,6 +97,11 @@ main {
   margin: 0;
   font-size: 1.25rem;
 }
+.getting-started img {
+  width: 100%;
+  max-width: 1000px;
+  margin: 1em auto;
+}
 .p1 {
   color: #ffd5cd;
 }
